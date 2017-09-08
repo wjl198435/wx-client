@@ -105,15 +105,18 @@ App({
               },
               data: { code: code, encryptedData: encryptedData, iv: iv }, // 设置请求的 参数
               success: (res) => {
-                wx.hideLoading();
-                that.login();
+                if (res.data.status == 0) {
+                  console.log(res.data.msg);
+                 wx.hideLoading();
+                 that.login();
+                }
               }
             })
-          }
+          }   
         })
       },
       fail: function () {
-        console.log('登陆失败')
+        console.log('注册失败')
       }
     })
   },
